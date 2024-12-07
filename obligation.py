@@ -42,3 +42,24 @@
 #
 # -----------------------------------------------------------------------------
 # Напишите программу ниже:
+cost_buy = int(input())    # Цена покупки облигации
+cost_d = int(input())    # Цена погашения облигации.
+sum_val = int(input())    # Сумму разовой купонной выплаты (Сумма купона)
+pvk = int(input())    # Периодичность выплаты купонов (в месяцах)
+kom = int(input())    # Комиссию брокера (в процентах) — применяется только при покупке облигации
+time = int(input())    # Период до погашения облигации (в месяцах)
+
+kom_buy = cost_buy * (kom / 100)     # комиссия
+full_cost = kom_buy + cost_buy    # полная стоимоть облигации
+general_kd = sum_val * (time / pvk)    # доход от купонов
+
+sum_without_tax = cost_d + general_kd - cost_buy    # доход без налога
+
+if sum_without_tax > 0:
+    tax = sum_without_tax * 0.13
+else:
+    tax = 0
+
+sum_in_conclusion = (sum_without_tax - tax) / cost_buy * 100    # доход в итоге
+
+print(sum_in_conclusion)
